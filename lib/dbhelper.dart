@@ -89,4 +89,36 @@ class DBHelper {
     );
     return mData;
   }
+
+  // update
+  Future<bool> updateNote({
+    required int id,
+    required String mTitle,
+    required String mDesc,
+    required String date,
+  }) async {
+    final db = await getDB();
+    final rowsEffected = await db.update(
+      TABLE_NOTE,
+      {
+        TITLE: mTitle,
+        DESC: mDesc,
+        DATE: date,
+      },
+      where: '$NOTE_SNO=?',
+      whereArgs: [id],
+    );
+    return rowsEffected > 0;
+  }
+
+  // delete
+  Future<bool> deleteNote({required int id}) async {
+    final db = await getDB();
+    final rowsEffected = await db.delete(
+      TABLE_NOTE,
+      where: '$NOTE_SNO=?',
+      whereArgs: [id],
+    );
+    return rowsEffected > 0;
+  }
 }

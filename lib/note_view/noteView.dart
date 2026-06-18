@@ -8,17 +8,32 @@ class Noteview extends GetView<Noteviewcontroller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await controller.onSaveUpdate();
+            },
+            icon: const Icon(Icons.check),
+          ),
+          IconButton(
+            onPressed: () async {
+              await controller.onDeleteNote();
+            },
+            icon: const Icon(Icons.delete),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Container(
           // color: Colors.white,
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               TextField(
                 controller: controller.titleController.value,
-                style: TextStyle(fontSize: 26),
-                decoration: InputDecoration(
+                style: const TextStyle(fontSize: 26),
+                decoration: const InputDecoration(
                   hint: Text(
                     'Title',
                     style: TextStyle(color: Colors.grey, fontSize: 26),
@@ -30,7 +45,7 @@ class Noteview extends GetView<Noteviewcontroller> {
               TextField(
                 controller: controller.descController.value,
                 maxLines: null,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hint: Text(
                     'Start typing ',
                     style: TextStyle(color: Colors.grey, fontSize: 18),
@@ -45,3 +60,4 @@ class Noteview extends GetView<Noteviewcontroller> {
     );
   }
 }
+

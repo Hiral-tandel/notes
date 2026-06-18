@@ -1,7 +1,7 @@
-- [ ] Analyze failing insert: table name exists vs creation
-- [ ] Inspect DB creation SQL in lib/dbhelper.dart
-- [ ] Fix SQL typos: autoicrement, missing closing parenthesis/quote, versioning correctness
-- [ ] Ensure database creation runs before insert (handle migrations)
-- [ ] Re-run app build/run (or run unit check) to verify no "no such table: note" error
-- [ ] (Optional) Add onUpgrade / close DB safety and basic error logging
-
+- [x] Add DBHelper.updateNote(...) method
+- [x] Add DBHelper.deleteNote(...) method
+- [x] Update Noteview UI to support Save (update) and Delete
+- [x] Wire NoteviewController to call update/delete and refresh data
+- [x] Add routes/route names if needed (register NOTE/:id route)
+- [x] Ensure DBHelper table creation SQL is valid (remove obvious SQL syntax issues)
+- [x] Run flutter analyze and/or flutter test / build
